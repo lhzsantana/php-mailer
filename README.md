@@ -30,7 +30,9 @@ The api will subscriber will respond to
 
 ## Docker
 
-##PHP
+You can run the application in a Docker environment.
+
+###PHP
     docker build . -t php-mailer:api
     docker run -p 9001:9001 php-mailer:api
 
