@@ -30,16 +30,16 @@ The api will subscriber will respond to
 
 ## Docker
 
-###PHP
+##PHP
     docker build . -t php-mailer:api
     docker run -p 9001:9001 php-mailer:api
 
-####ython
+###Python
     cd Python
     docker build . -t php-mailer:runner
     docker run php-mailer:runner
 
-####Compose (you will need docker compose installed)
+###Compose (you will need docker compose installed)
 
     docker-compose up
 
