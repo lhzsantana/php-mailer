@@ -5,13 +5,21 @@ import smtplib
 import threading
 
 r_server = redis.Redis('192.168.99.100')
+FROM = "x@y.com"
 
 def save_to_redis(key, obj):
+   print("Saving in redis")
    r_server.lpush(key["email"],obj["message"])
    r_server.incr("counter_ps")
 
 def send_email(key, obj):
-   r_server.incr("counter_email")
+   try:
+       r_server.incr("counter_email")
+       server = smtplib.SMTP('localhost')
+       server.sendmail(FROM, key["email"], obj["message"]["message"])
+       server.quit()
+   except Exception:
+    r_server.set(obj["uuid"]+":FAILURE:"+key["email"],key["email"]);
 
 def notify_ps(obj):
     for key in obj["subscribers"]:

@@ -28,17 +28,19 @@ class RoutesLoader
 
     public function bindRoutesToControllers()
     {
-        $api = $this->app["controllers_factory"];
+        $api1 = $this->app["controllers_factory"];
+        $api2 = $this->app["controllers_factory"];
 
-        $api->get('/notification', "notification.controller:getAll");
-        $api->get('/notification/{id}', "notification.controller:getOne");
-        $api->post('/notification', "notification.controller:save");
-        $api->delete('/notification/{id}', "notification.controller:delete");
+        $api1->get('/notification', "notification.controller:getAll");
+        $api1->get('/notification/{id}', "notification.controller:getOne");
+        $api1->post('/notification', "notification.controller:save");
+        $api1->delete('/notification/{id}', "notification.controller:delete");
 
-        $api->get('/notification/subscriber/{id}', "pushSubscriber.controller:getOne");
-        $api->delete('/notification/subscriber/{id}', "pushSubscriber.controller:delete");
+        $api2->get('/notification/subscriber/{id}', "pushSubscriber.controller:getOne");
+        $api2->delete('/notification/subscriber/{id}', "pushSubscriber.controller:delete");
 
-        $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version"], $api);
+        $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version1"], $api1);
+        $this->app->mount($this->app["api.endpoint"].'/'.$this->app["api.version2"], $api2);
     }
 }
 

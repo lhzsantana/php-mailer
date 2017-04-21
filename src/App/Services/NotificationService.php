@@ -8,7 +8,16 @@ class NotificationService extends BaseService
 
     public function getOne($id)
     {
-        return json_decode($this->predis->get($this->PREFIX.$id));
+        $result["request"] = json_decode($this->predis->get($this->PREFIX.$id));
+
+        $failures = array();
+
+        foreach ($this->predis->keys($id.":FAILURE:*") as &$key) {
+            $failures[] = $this->predis->get($key);
+        }
+        $result["failures"]= $failures;
+
+        return $result;
     }
 
     public function getAll()
@@ -16,7 +25,7 @@ class NotificationService extends BaseService
         $result = array();
 
         foreach ($this->predis->keys("*") as &$key) {
-            $result[] = json_decode($this->predis->get($this->PREFIX.$key));
+            $result[] = getOne($key);
         }
 
         return $result;

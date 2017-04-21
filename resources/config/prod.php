@@ -1,6 +1,7 @@
 <?php
 $app['log.level'] = Monolog\Logger::ERROR;
-$app['api.version'] = "v1";
+$app['api.version1'] = "v1";
+$app['api.version2'] = "v2";
 $app['api.endpoint'] = "/api";
 
 /**
