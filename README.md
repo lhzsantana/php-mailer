@@ -1,6 +1,6 @@
 # Silex Simple REST Notifier
 
-### How do I run it?
+## How do I run it?
 After download the last [release](https://github.com/lhzsantana/php-mailer), from the root folder of the project, run the following commands to install the php dependencies, import some data, and run a local php server.
 
 You need php **5.5.9***, **Composer**, and **Python** installed. Also, you need to point the code to Redis in two files **/Python/notifier.py** and **/src/app.php** (replace 192.168.99.100:6379 with the correct Redis installation), and change the smtp settings (server and FROM) on the Python file. You can use **docker run -p 6379:6379 lhzsantana/redis-standalone**.
@@ -11,7 +11,7 @@ You need php **5.5.9***, **Composer**, and **Python** installed. Also, you need 
 
 Your api is now available at http://localhost:9001/api/v1.
 
-### What you will get
+## What you will get
 
 ![alt tag](https://github.com/lhzsantana/php-mailer/blob/master/architecture.jpg)
 
@@ -28,18 +28,18 @@ The api will subscriber will respond to
 	DELETE -> http://localhost:9001/api/v2/notification/subscriber/{id}
 
 
-### Docker
+## Docker
 
-####PHP
+###PHP
     docker build . -t php-mailer:api
     docker run -p 9001:9001 php-mailer:api
 
-####Python
+####ython
     cd Python
     docker build . -t php-mailer:runner
     docker run php-mailer:runner
 
-#####Compose (you will need docker compose installed)
+####Compose (you will need docker compose installed)
 
     docker-compose up
 
