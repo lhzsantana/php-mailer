@@ -32,18 +32,18 @@ The api will subscriber will respond to
 
 You can run the application in a Docker environment.
 
-###PHP
+### PHP
 
     docker build . -t php-mailer:api
     docker run -p 9001:9001 php-mailer:api
 
-###Python
+### Python
 
     cd Python
     docker build . -t php-mailer:runner
     docker run php-mailer:runner
 
-###Compose (you will need docker compose installed)
+### Compose (you will need docker compose installed)
 
     docker-compose up
 
