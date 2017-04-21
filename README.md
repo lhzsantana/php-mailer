@@ -13,7 +13,7 @@ Your api is now available at http://localhost:9001/api/v1.
 
 #### What you will get
 
-[[archicteture.png|alt=octocat]]
+![alt tag](https://github.com/lhzsantana/php-mailer/blob/master/architecture.jpg)
 
 The api for notification will respond to
 
