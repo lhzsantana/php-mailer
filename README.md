@@ -12,6 +12,9 @@ You need php **5.5.9***, **Composer**, and **Python** installed. Also, you need 
 Your api is now available at http://localhost:9001/api/v1.
 
 #### What you will get
+
+![alt tag](https://github.com/lhzsantana/php-mailer/blob/master/architecture.jpg)
+
 The api for notification will respond to
 
 	GET  ->   http://localhost:9001/api/v1/notification
