@@ -3,9 +3,34 @@ import json
 import time
 import smtplib
 import threading
+import sys
 
 r_server = redis.Redis('192.168.99.100')
 FROM = "x@y.com"
+
+def main():
+
+	while True:
+		print("Waking up")
+		for key in r_server.scan_iter(match='NOTIF*'):
+
+			obj = json.loads(r_server.get(key))
+
+			if obj["status"]=="ADDED":
+				obj["status"]="PROCESSING"
+				r_server.set("NOTIFICATION:"+obj["uuid"],json.dumps(obj));
+
+				if "PUSH_SUBSCRIBE" in obj["channels"]:
+					t = threading.Thread(target=notify_ps, args = (obj,))
+					t.daemon = True
+					t.start()
+
+				if "EMAIL" in obj["channels"]:
+					t = threading.Thread(target=notify_email, args = (obj,))
+					t.daemon = True
+					t.start()
+		time.sleep(2)
+
 
 def save_to_redis(key, obj):
    print("Saving in redis")
@@ -39,23 +64,6 @@ def notify_email(obj):
     obj["status"]="COMPLETED"
     r_server.set("NOTIFICATION:"+obj["uuid"],json.dumps(obj));
 
-while True:
-    for key in r_server.scan_iter(match='NOTIF*'):
-
-        obj = json.loads(r_server.get(key))
-
-        if obj["status"]=="ADDED":
-            obj["status"]="PROCESSING"
-            r_server.set("NOTIFICATION:"+obj["uuid"],json.dumps(obj));
-
-            if "PUSH_SUBSCRIBE" in obj["channels"]:
-                t = threading.Thread(target=notify_ps, args = (obj,))
-                t.daemon = True
-                t.start()
-
-            if "EMAIL" in obj["channels"]:
-                t = threading.Thread(target=notify_email, args = (obj,))
-                t.daemon = True
-                t.start()
-    time.sleep(2)
-
+if __name__ == "__main__":
+    main()
+	

@@ -28,6 +28,18 @@ The api will subscriber will respond to
 	DELETE -> http://localhost:9001/api/v2/notification/subscriber/{id}
 
 
+#### Docker
+
+#####PHP
+    docker build . -t php-mailer:api
+    docker run -p 9001:9001 php-mailer:api
+
+#####Python
+    cd Python
+    docker build . -t php-mailer:runner
+    docker run php-mailer:runner
+
+
 
 
 
