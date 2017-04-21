@@ -19,10 +19,32 @@ The api for notification will respond to
 
 	GET  ->   http://localhost:9001/api/v1/notification
     GET  ->   http://localhost:9001/api/v1/notification/{id}
-	POST ->   http://localhost:9001/api/v1/notification
 	DELETE -> http://localhost:9001/api/v1/notification/{id}
+	POST ->   http://localhost:9001/api/v1/notification
 
-The api will subscriber will respond to
+The format for adding a notification request is represented below.
+The response will be have an UUID and a list of failures (it can be empty).
+
+    {
+      "channels": [
+        "PUSH_SUBSCRIBE", "EMAIL"
+      ],
+      "message": {
+        "message": "m",
+        "subject": "s"
+      },
+      "subscribers": [
+        {
+          "email": "x@y.com",
+          "name": "X Y"
+        }
+      ]
+    }
+    
+
+
+
+The api will subscriber will respond to:
 	
     GET  ->   http://localhost:9001/api/v2/notification/subscriber/{id}
 	DELETE -> http://localhost:9001/api/v2/notification/subscriber/{id}

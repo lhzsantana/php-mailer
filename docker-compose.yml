@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-    - "9005:9001"
+    - "9001:9001"
     links:
     - redis
   notifier:
