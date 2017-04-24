@@ -22,12 +22,6 @@ The api for notification will respond to
 	DELETE -> http://localhost:9001/api/v1/notification/{id}
 	POST ->   http://localhost:9001/api/v1/notification
 
-These endpoints will be protected using OAuth2, thus the following steps are necessary to access them:
-
-![alt tag](https://github.com/lhzsantana/php-mailer/blob/master/auth1.jpg)
-
-    1. http://localhost:9001/api/v1/notification?access_token=473aed78d33801ccd94bb691741a913e27f0ad97
-    
 The format for adding a notification request is represented below.
 The response will be have an UUID and a list of failures (it can be empty).
 
@@ -47,15 +41,19 @@ The response will be have an UUID and a list of failures (it can be empty).
       ]
     }
     
-
-
-
 The api will subscriber will respond to:
 	
     GET  ->   http://localhost:9001/api/v2/notification/subscriber/{id}
 	DELETE -> http://localhost:9001/api/v2/notification/subscriber/{id}
 
+These endpoints will be protected using OAuth2. If you are using Postman, you can generate an access token as defined below.
 
+![alt tag](https://github.com/lhzsantana/php-mailer/blob/master/auth1.jpg)
+
+Then you can add this access token to the request issued to endpoints presented before.
+
+    http://localhost:9001/api/v1/notification?access_token=473aed78d33801ccd94bb691741a913e27f0ad97
+    
 ## Docker
 
 You can run the application in a Docker environment.
