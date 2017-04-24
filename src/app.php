@@ -23,7 +23,7 @@ $app->before(function (Request $request) {
 });
 
 $app->register(new Predis\Silex\ClientServiceProvider(), [
-    'predis.parameters' => 'tcp://192.168.99.100:6379'
+    'predis.parameters' => 'redis:6379'
 ]);
 
 $app->register(new HttpCacheServiceProvider(), array("http_cache.cache_dir" => ROOT_PATH . "/storage/cache",));

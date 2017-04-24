@@ -5,7 +5,7 @@ import smtplib
 import threading
 import sys
 
-r_server = redis.Redis('192.168.99.100')
+r_server = redis.Redis('redis')
 FROM = "x@y.com"
 
 def main():

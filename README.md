@@ -3,7 +3,7 @@
 ## How do I run it?
 After download the last [release](https://github.com/lhzsantana/php-mailer), from the root folder of the project, run the following commands to install the php dependencies, import some data, and run a local php server.
 
-You need php **5.5.9***, **Composer**, and **Python** installed. Also, you need to point the code to Redis in two files **/Python/notifier.py** and **/src/app.php** (replace 192.168.99.100:6379 with the correct Redis installation), and change the smtp settings (server and FROM) on the Python file. You can use **docker run -p 6379:6379 lhzsantana/redis-standalone**.
+You need php **5.5.9***, **Composer**, and **Python** installed. Also, you need to point the code to Redis in two files **/Python/notifier.py** and **/src/app.php** (replace the "redis" placeholder with the correct Redis installation), and change the smtp settings (server and FROM) on the Python file. You can use **docker run -p 6379:6379 lhzsantana/redis-standalone**.
     
     composer install 
     php -S 0:9001 -t web/
