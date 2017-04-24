@@ -24,7 +24,7 @@ The api for notification will respond to
 
 These endpoints will be protected using OAuth2, thus the following steps are necessary to access them:
 
-    1. Authorization Endpoint (http://localhost:9001/api/oauth2/authorize?username=demousername1&password=demopassword1)
+    1. Authorization Endpoint (http://localhost:9001/api/authorize?response_type=code&client_id=demoapp&redirect_uri=http%3A%2F%2Fbrentertainment.com%2Foauth2%2Fclient%2Freceive_authcode&state=11tchm4uel2fiite1keqiqdmq2)
     2. Token Endpoint (http://localhost:9001/api//api/oauth2/token)
     3.
     

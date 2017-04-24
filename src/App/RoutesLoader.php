@@ -17,12 +17,12 @@ class RoutesLoader
 
     private function instantiateControllers()
     {
-        $this->app['notification.controller'] = function() {
-            return new Controllers\NotificationController($this->app['notification.service']);
+        $this->app['pushSubscriber.controller'] = function() {
+            return new Controllers\PushSubscriberController($this->app['pushSubscriber.service'], $this->app);
         };
 
-        $this->app['pushSubscriber.controller'] = function() {
-            return new Controllers\PushSubscriberController($this->app['pushSubscriber.service']);
+        $this->app['notification.controller'] = function() {
+            return new Controllers\NotificationController($this->app['notification.service'], $this->app);
         };
     }
 

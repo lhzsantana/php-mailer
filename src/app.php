@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use App\ServicesLoader;
 use App\RoutesLoader;
 use Carbon\Carbon;
-use OAuth2Demo\Server\Server;
 
 date_default_timezone_set('Europe/London');
 
@@ -52,6 +51,6 @@ $app->error(function (\Exception $e, $code) use ($app) {
 $app->register(new \Euskadi31\Silex\Provider\CorsServiceProvider);
 $app->register(new ServiceControllerServiceProvider());
 
-$app->mount('/api+', new App\OAuth2\Server());
+$app->mount('/api', new App\OAuth2\Server());
 
 return $app;
