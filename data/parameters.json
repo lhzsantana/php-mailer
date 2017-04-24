@@ -1,0 +1,10 @@
+{
+  "client_id": "mailer",
+  "client_secret": "a3b4b74330724a927bec",
+  "token_route": "/token",
+  "authorize_route": "/authorize",
+  "resource_route": "/profile",
+  "resource_method": "POST",
+  "resource_params": { "debug": true },
+  "curl_options": { "http_port": 443, "verifyssl": false }
+}

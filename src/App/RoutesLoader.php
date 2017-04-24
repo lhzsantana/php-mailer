@@ -17,12 +17,12 @@ class RoutesLoader
 
     private function instantiateControllers()
     {
-        $this->app['notification.controller'] = function() {
-            return new Controllers\NotificationController($this->app['notification.service']);
+        $this->app['pushSubscriber.controller'] = function() {
+            return new Controllers\PushSubscriberController($this->app['pushSubscriber.service'], $this->app);
         };
 
-        $this->app['pushSubscriber.controller'] = function() {
-            return new Controllers\PushSubscriberController($this->app['pushSubscriber.service']);
+        $this->app['notification.controller'] = function() {
+            return new Controllers\NotificationController($this->app['notification.service'], $this->app);
         };
     }
 
@@ -31,6 +31,7 @@ class RoutesLoader
         $api1 = $this->app["controllers_factory"];
         $api2 = $this->app["controllers_factory"];
 
+        $api1->get('/authorize', "authorize.controller:authorize");
         $api1->get('/notification', "notification.controller:getAll");
         $api1->get('/notification/{id}', "notification.controller:getOne");
         $api1->post('/notification', "notification.controller:save");
