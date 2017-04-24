@@ -22,6 +22,12 @@ The api for notification will respond to
 	DELETE -> http://localhost:9001/api/v1/notification/{id}
 	POST ->   http://localhost:9001/api/v1/notification
 
+These endpoints will be protected using OAuth2, thus the following steps are necessary to access them:
+
+    1. Authorization Endpoint (http://localhost:9001/api/oauth2/authorize?username=demousername1&password=demopassword1)
+    2. Token Endpoint (http://localhost:9001/api//api/oauth2/token)
+    3.
+    
 The format for adding a notification request is represented below.
 The response will be have an UUID and a list of failures (it can be empty).
 
